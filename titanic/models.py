@@ -9,4 +9,6 @@ class Person(models.Model):
     age = models.FloatField()
     ticket = models.CharField(max_length=100)
     fare = models.FloatField()
-    cabin = models.CharField(max_length=100)
+
+    def __str__(self):
+        return self.name
