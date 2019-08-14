@@ -56,4 +56,3 @@ class Command(BaseCommand):
                     fare=getattr(row, 'Fare'),
                 )
 
-

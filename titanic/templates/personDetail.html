@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block page_content %}
+<div class="col-md-8 offset-md-2">
+    <h1>Person Details</h1>
+    <p>  Passenger Name: {{ person.name }}</p>
+    <p> Passenger Age: {{ person.age }}</p>
+    <p> Sex: {{ person.sex }}</p>
+    <p> Passenger Class: {{ person.passengerClass }}</p>
+    <p> Passenger ID: {{ person.passengerId }}</p>
+    <p> Passenger Ticket: {{ person.ticket }}</p>
+    <p> Passenger Fare: ${{ person.fare }} </p>
+    <a href="{% url 'personIndex' %}"
+                   class="btn btn-primary">
+                    Return
+    </a>
+</div>
+{% endblock %}
