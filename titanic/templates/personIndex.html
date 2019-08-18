@@ -3,8 +3,13 @@
 <div class="col-md-8 offset-md-2">
     <h1>Person Index</h1>
     <hr>
+    <form class="form-inline my-2 my-lg-0" action="{% url 'search_results' %}" method="get" >
+      <input class="form-control mr-sm-2" type="search" placeholder="Search by Name, ID or Ticket Number" aria-label="Search" name="search">
+      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+    </form>
     {% for person in persons %}
         <h2><a href="{% url 'personDetail' person.pk%}">{{ person.name }}</a></h2>
     {% endfor %}
 </div>
 {% endblock %}
+R

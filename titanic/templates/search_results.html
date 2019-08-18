@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% block page_content %}
+<div class="col-md-8 offset-md-2">
+    <h1>Search Results</h1>
+    <hr>
+    <p> </p>
+    {% for person in persons %}
+        <h2><a href="{% url 'personDetail' person.pk%}">{{ person.name }}</a></h2>
+    {% endfor %}
+    <a href="{% url 'personIndex' %}" class="btn btn-primary">
+        Return
+    </a>
+</div>
+{% endblock %}

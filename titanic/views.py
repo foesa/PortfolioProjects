@@ -17,13 +17,19 @@ def persondetail(request, pk):
     }
     return render(request, "personDetail.html", context)
 
-class searchResultsView():
-
-    def get_queryset(self):
-        query = self.request.GET.get('q')
+def searchResultsView(request):
+    query = request.GET['search']
+    personList = None
+    try:
         personList = Person.objects.filter(
-            Q(name__icontains=query)
+            Q(passengerId__exact=int(query)) | Q(ticket__icontains=query)
         )
-        return personList
+    except:
+        personList = Person.objects.filter(
+            Q(name__icontains=query) | Q(ticket__icontains=query)
+        )
+    context ={
+         'persons': personList
+    }
+    return render(request,"search_results.html",context)
 
-# Create your views here.
