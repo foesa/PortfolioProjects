@@ -33,3 +33,5 @@ def searchResultsView(request):
     }
     return render(request,"search_results.html",context)
 
+def graphPage(request):
+    return()

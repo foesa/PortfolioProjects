@@ -39,7 +39,7 @@ class Command(BaseCommand):
 
 
     def handle(self, *args, **options):
-        path = "/home/foesa/Documents/Refactored_Py_DS_ML_Bootcamp-master/13-Logistic-Regression/titanic_test.csv"
+        path = "/home/foesa/Documents/Refactored_Py_DS_ML_Bootcamp-master/13-Logistic-Regression/titanic_train.csv"
         database = pd.read_csv(path)
         database['Age'] = database[['Age', 'Pclass']].apply(Agefill, axis=1)
         database['Fare'] = database[['Fare','Pclass']].apply(farefill,axis=1)
