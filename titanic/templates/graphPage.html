@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% block page_content %}
+    <div class="col-md-8 offset-md-2">
+    <h1>Graph Page</h1>
+    <hr>
+        {% load static %}
+        <img src="{% static 'titanic/sexSaved.png' %}" alt="Passengers saved by sex" >
+        <img src="{% static 'titanic/classSaved.png' %}" alt="Passengers saved by class" >
+        <img src="{% static 'titanic/ageHist.png' %}" alt="Passengers age and their frequency" >
+        <img src="{% static 'titanic/agePlot.png' %}" alt="Box Plot of Ages by class" >
+        <img src="{% static 'titanic/farePlot.png' %}" alt="Box plot of ages by Fare" >
+    <a href="{% url 'personIndex' %}" class="btn btn-primary">
+        Return
+    </a>
+</div>
+{% endblock %}
