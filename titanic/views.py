@@ -1,4 +1,5 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
+from titanic.forms import MLForm
 from titanic.models import Person
 from django.db.models import Q
 
@@ -35,3 +36,14 @@ def searchResultsView(request):
 
 def graphPage(request):
     return render(request,"graphPage.html")
+
+def MLInput(request):
+    if request.method == "GET":
+        form = MLForm()
+        return render(request, "MLInputForm.html", {"form": form})
+    elif request.method == "POST":
+        form = MLForm(request.POST)
+        if form.is_valid():
+            text = form.cleaned_data
+            form.save()
+            return render(request, "MLInputForm.html", {"form": form})
