@@ -9,7 +9,7 @@ class MLForm(forms.ModelForm):
     age = forms.IntegerField(max_value=100, min_value=1)
     ticket = forms.CharField(required=False, max_length=100)
     fare = forms.IntegerField(min_value=1)
-
+    embarked = forms.ChoiceField(choices=[("Q","Q"),("S","S"),("C","C")])
     class Meta:
         model = Person
         fields = '__all__'

@@ -1,7 +1,10 @@
+import pickle
+
 from django.shortcuts import render, redirect
 from titanic.forms import MLForm
 from titanic.models import Person
 from django.db.models import Q
+import pandas as pd
 
 
 def personIndex(request):
@@ -44,6 +47,23 @@ def MLInput(request):
     elif request.method == "POST":
         form = MLForm(request.POST)
         if form.is_valid():
-            text = form.cleaned_data
             form.save()
-            return render(request, "MLInputForm.html", {"form": form})
+            return redirect(MLResult,form)
+
+
+def MLResult(request, details):
+    if(request.method == "GET"):
+        data = {'PassengerId':[details.p],'Pclass':[details.passengerClass],'Name':[details.name],'Sex':[details.sex],
+                'Age':[details.sex],'SibSp':[1],'Parch':[0],'Ticket':[details.ticket],'Fare':[details.fare],'Embarked':[details.embarked]}
+        dataframe = pd.dataframe(data)
+        sex = pd.get_dummies(dataframe['Sex'], drop_first=True)
+        embarked = pd.get_dummies(dataframe['Embarked'], drop_first=True)
+        dataframe.drop(['Sex', 'Embarked', 'Name', 'Ticket'], axis=1, inplace=True)
+        dataframe.drop('PassengerId', axis=1, inplace=True)
+        pd.concat([dataframe, sex, embarked], axis=1)
+        print(dataframe)
+        #  filename = "final_model.sav"
+        # loaded_model =pickle.load(open(filename,'rb'))
+
+
+    return render(request,"MLResults.html")
