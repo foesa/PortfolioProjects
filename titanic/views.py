@@ -48,13 +48,15 @@ def MLInput(request):
         form = MLForm(request.POST)
         if form.is_valid():
             form.save()
-            return redirect(MLResult,form)
+            text = form.cleaned_data
+            return redirect('MLResult',text)
 
 
-def MLResult(request, details):
+def MLResult(request,details):
     if(request.method == "GET"):
-        data = {'PassengerId':[details.p],'Pclass':[details.passengerClass],'Name':[details.name],'Sex':[details.sex],
-                'Age':[details.sex],'SibSp':[1],'Parch':[0],'Ticket':[details.ticket],'Fare':[details.fare],'Embarked':[details.embarked]}
+        data = {'PassengerId':[details['passengerId']],'Pclass':[details['passengerClass']],'Name':[details['name']],
+                'Sex':[details['sex']],'Age':[details['age']],'SibSp':[1],'Parch':[0],'Ticket':[details['ticket']],
+                'Fare':[details['fare']],'Embarked':[details['embarked']]}
         dataframe = pd.dataframe(data)
         sex = pd.get_dummies(dataframe['Sex'], drop_first=True)
         embarked = pd.get_dummies(dataframe['Embarked'], drop_first=True)
@@ -64,6 +66,4 @@ def MLResult(request, details):
         print(dataframe)
         #  filename = "final_model.sav"
         # loaded_model =pickle.load(open(filename,'rb'))
-
-
     return render(request,"MLResults.html")

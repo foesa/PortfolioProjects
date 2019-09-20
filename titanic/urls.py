@@ -7,5 +7,5 @@ urlpatterns = [
     path("search/", views.searchResultsView, name="search_results"),
     path("graph/", views.graphPage, name="graphPage"),
     path("mlinput/", views.MLInput, name="MLInputForm"),
-    path("mlresults/",views.MLResult, name="MLResults")
+    path("/mlresult",views.MLResult, name="MLResult"),
 ]
