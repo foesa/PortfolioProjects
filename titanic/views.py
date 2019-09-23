@@ -60,12 +60,17 @@ def MLResult(request):
                 'Sex':[details['sex']],'Age':[details['age']],'SibSp':[1],'Parch':[0],'Ticket':[details['ticket']],
                 'Fare':[details['fare']],'Embarked':[details['embarked']]}
         dataframe = pd.DataFrame(data)
+        full_info = dataframe
         sex = pd.get_dummies(dataframe['Sex'], drop_first=True)
         embarked = pd.get_dummies(dataframe['Embarked'], drop_first=True)
         dataframe.drop(['Sex', 'Embarked', 'Name', 'Ticket'], axis=1, inplace=True)
         dataframe.drop('PassengerId', axis=1, inplace=True)
         pd.concat([dataframe, sex, embarked], axis=1)
         print("here")
-        #  filename = "final_model.sav"
-        # loaded_model =pickle.load(open(filename,'rb'))
+        print(dataframe)
+        print(dataframe)
+        filename = "/home/foesa/PycharmProjects/PortfolioProjects/titanic/ML Model/final_model.sav"
+        loaded_model = pickle.load(open(filename,'rb'))
+        predictions = loaded_model.predict(dataframe)
+        print(predictions)
     return render(request,"MLResults.html")
