@@ -72,5 +72,7 @@ def MLResult(request):
         filename = "/home/foesa/PycharmProjects/PortfolioProjects/titanic/ML Model/final_model.sav"
         loaded_model = pickle.load(open(filename,'rb'))
         predictions = loaded_model.predict(dataframe)
+        probability = loaded_model.predict_proba(dataframe)
         print(predictions)
+        print(probability)
     return render(request,"MLResults.html")
