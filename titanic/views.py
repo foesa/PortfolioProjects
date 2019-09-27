@@ -73,7 +73,7 @@ def MLResult(request):
         loaded_model = pickle.load(open(filename,'rb'))
         predictions = loaded_model.predict(dataframe)[0]
         probability = loaded_model.predict_proba(dataframe)
-        survive_chance = (probability[0][1] * 10)
+        survive_chance = (probability[0][1] * 100)
         survive_chance = round(survive_chance,5)
         context ={
             'DoA' : predictions, 'survive_chance':survive_chance

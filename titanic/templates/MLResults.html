@@ -12,8 +12,8 @@
                  {% else  %}
                      <p class="card-text">This person would likely die.</p>
                  {% endif %}
-                <a href='mlinput' class="btn btn-primary">Enter a new person</a>
-                <a href='personIndex' class="btn btn-primary">Search database</a>
+                 <a href="{% url 'personIndex' %}" class="btn btn-primary"> Search Database </a>
+                 <a href="{% url 'MLInputForm' %}" class="btn btn-primary"> New Person </a>
             </div>
         </div>
 </div>
