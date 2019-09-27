@@ -71,8 +71,11 @@ def MLResult(request):
         print(dataframe)
         filename = "/home/foesa/PycharmProjects/PortfolioProjects/titanic/ML Model/final_model.sav"
         loaded_model = pickle.load(open(filename,'rb'))
-        predictions = loaded_model.predict(dataframe)
+        predictions = loaded_model.predict(dataframe)[0]
         probability = loaded_model.predict_proba(dataframe)
-        print(predictions)
-        print(probability)
-    return render(request,"MLResults.html")
+        survive_chance = (probability[0][1] * 10)
+        survive_chance = round(survive_chance,5)
+        context ={
+            'DoA' : predictions, 'survive_chance':survive_chance
+        }
+    return render(request,"MLResults.html",context)

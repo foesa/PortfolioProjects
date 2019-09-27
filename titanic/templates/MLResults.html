@@ -1,7 +1,21 @@
-% extends "base.html" %}
+{% extends "titanic_base.html" %}
 {% block page_content %}
-    <div class="col-md-8 offset-md-2">
+<div class="col-md-8 offset-md-2">
     <h1>Results Page</h1>
-    <p>  {{ text.Age }} </p>
+        <hr>
+        <div class="card">
+            <h5 class="card-header">Person Result</h5>
+            <div class="card-body">
+                <h5 class="card-title">Based of the details entered, this person has a {{ survive_chance }}% chance of survival</h5>
+                 {% if DoA  == 1 %}
+                     <p class="card-text">This person would likely survive.</p>
+                 {% else  %}
+                     <p class="card-text">This person would likely die.</p>
+                 {% endif %}
+                <a href='mlinput' class="btn btn-primary">Enter a new person</a>
+                <a href='personIndex' class="btn btn-primary">Search database</a>
+            </div>
+        </div>
 </div>
 {% endblock %}
+
