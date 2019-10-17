@@ -44,4 +44,12 @@ This is a page of graphs based of the data. This is used to provide a graphical 
 
 ![alt text](https://github.com/foesa/PortfolioProjects/blob/master/WebApp%20Images/Screenshot%20from%202019-10-17%2015-41-39.png)
 
-Here we see the main attraction, the person creation page. Here it's blank 
+Here we see the main attraction, the person creation page. Here it's blank. After filling out the values we get this form:
+
+![alt text](https://github.com/foesa/PortfolioProjects/blob/master/WebApp%20Images/Screenshot%20from%202019-10-17%2015-42-44.png)
+
+After clicking "Submit" we are sent to the results page:
+
+![alt text](https://github.com/foesa/PortfolioProjects/blob/master/WebApp%20Images/Screenshot%20from%202019-10-17%2015-42-21.png)
+
+From here we can create a new person, or go to the search page and find created people or anyone else in the database.
